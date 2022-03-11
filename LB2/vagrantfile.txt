@@ -1,8 +1,10 @@
 Vagrant.configure("2") do |config|
 
-  # General Vagant VM configuration
-  config.vm.box = "ubuntu/zesty64"
+  # General Vagrant VM configuration
+  config.vm.box = "ubuntu/bionic64"
+  config.vm.network :public_network, :bridge => "eth0", ip: "192.168.1.10"
   config.vm.network :forwarded_port, guest: 3306, host: 3306
+  config.vm.network :forwarded_port, guest: 80, host: 3306
 
   # Adjustment for VM
   config.vm.provider :virtualbox do |vb|
@@ -14,4 +16,4 @@ Vagrant.configure("2") do |config|
     ] 
   end
 
-  #config.vm.provision :shell, path: "bootstrap.sh"
+  # config.vm.provision :shell, path: "bootstrap.sh"
