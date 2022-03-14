@@ -5,7 +5,7 @@
 # Inhaltsverzeichnis
 
 - [Einführung](#einfuehrung)
-- [Grafische Übersicht des Service](#grafischeuebersichtdesservice)
+- [Grafische Übersicht des Services](#grafischeuebersichtdesservices)
 - [Code](#code)
 	- [Code-Quelle](#code-quelle)
 	- [Vagrantfile](#vagrantfile)
@@ -17,6 +17,14 @@
 
 # Einführung
 
-Mein Projekt umfasst die Virtualisierung und Automatisierung von Downloads, die Einrichtung von 
-Ubuntu zum Ausführen eines MySQL-Servers und die Installation der erforderlichen Abhängigkeiten 
-und Konfigurationen, die erforderlich sind, damit der MySQL-Server ordnungsgemäß funktioniert.
+Ich habe mich für das Projekt **MySQL automatischen einrichten** entschieden.
+Mein Projekt umfasst die Virtualisierung und Automatisierung die Einrichtung von Ubuntu zum 
+Ausführen eines MySQL-Servers und die Installation der erforderlichen Abhängigkeiten und 
+Konfigurationen, die erforderlich sind, damit der MySQL-Server ordnungsgemäß funktioniert.
+Damit es angenehmer die MySQL-Datenbank und ihre Benutzer zu verwalten und zu konfigurieren
+habe ich mich entschieden noch einen GUI mit einzubinden. Dazu verwenden ich das webbasierte 
+phpmyadmin und die entsprechenden Webtools Apache2 und php7.
+
+---
+
+# Grafische Übersicht des Services
