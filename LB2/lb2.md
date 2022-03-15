@@ -26,7 +26,6 @@ habe ich mich entschieden noch einen GUI mit einzubinden. Dazu verwenden ich das
 phpmyadmin und die entsprechenden Webtools Apache2 und php7.
 
 ---
-
 <a name="grafische"></a>
 # Grafische Übersicht des Services
 
@@ -127,11 +126,11 @@ Mein bootstrapfile sieht folgendermassen aus:
 
 
 ---
-
+<a name="anwendung"></a>
 # Service Anwendung
 
 ---
-
+<a name="testen"></a>
 # Service teseten
 
 ---
