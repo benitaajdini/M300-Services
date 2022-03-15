@@ -5,13 +5,13 @@
 # Inhaltsverzeichnis
 
 - [Einführung](#einführung)
-- [Grafische Übersicht des Services](#grafischeÜbersichtdesServices)
+- [Grafische Übersicht des Services](#grafische)
 - [Code](#code)
 	- [Code-Quelle](#code-quelle)
 	- [Vagrantfile](#vagrantfile)
-	- [Bootrstrap.sh](#bootrstrap.sh)
-- [Service Anwendung](#service-Anwendung)
-- [Service testen](#servicetesten)
+	- [Bootrstrap.sh](#bootrstrap)
+- [Service Anwendung](#service)
+- [Service testen](#service)
 
 ---
 
