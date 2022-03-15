@@ -41,7 +41,7 @@ auf dieser Seite gefunden.
 
 Mein Vagrantfile sieht folgendermassen aus:
 
-'Vagrant.configure("2") do |config|
+` Vagrant.configure("2") do |config|
 
   # General Vagrant VM configuration
   config.vm.box = "ubuntu/bionic64"
@@ -62,7 +62,7 @@ Mein Vagrantfile sieht folgendermassen aus:
     ] 
   end
 
-end'
+end `
 
 
 
