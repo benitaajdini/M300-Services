@@ -5,7 +5,7 @@
 # Inhaltsverzeichnis
 
 - [Einführung](#einführung)
-- [Grafische Übersicht des Services](#grafischeübersichtdesservices)
+- [Grafische Übersicht des Services](#grafischeÜbersichtdesServices)
 - [Code](#code)
 	- [Code-Quelle](#code-quelle)
 	- [Vagrantfile](#vagrantfile)
