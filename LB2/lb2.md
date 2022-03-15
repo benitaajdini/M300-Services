@@ -9,7 +9,7 @@
 - [Code](#code)
 	- [Code-Quelle](#code-quelle)
 	- [Vagrantfile](#vagrantfile)
-	- [Bootrstrapfile](#bootrsfile)
+	- [Bootstrap.sh](#bootstrap)
 - [Service Anwendung](#anwendung)
 - [Service testen](#testen)
 
@@ -26,7 +26,7 @@ habe ich mich entschieden noch einen GUI mit einzubinden. Dazu verwenden ich das
 phpmyadmin und die entsprechenden Webtools Apache2 und php7.
 
 ---
-
+<a name="grafische"></a>
 # Grafische Übersicht des Services
 ---
 
@@ -66,7 +66,7 @@ Mein Vagrantfile sieht folgendermassen aus:
 
 
 
-
+<a name="bootstrap"></a>
 ## Bootstrap.sh
 
 ---
