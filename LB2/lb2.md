@@ -9,9 +9,9 @@
 - [Code](#code)
 	- [Code-Quelle](#code-quelle)
 	- [Vagrantfile](#vagrantfile)
-	- [Bootrstrap.sh](#bootrstrap)
-- [Service Anwendung](#service)
-- [Service testen](#service)
+	- [Bootrstrapfile](#bootrsfile)
+- [Service Anwendung](#anwendung)
+- [Service testen](#testen)
 
 ---
 
