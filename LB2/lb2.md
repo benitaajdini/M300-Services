@@ -4,8 +4,8 @@
 
 # Inhaltsverzeichnis
 
-- [Einführung](#einfuehrung)
-- [Grafische Übersicht des Services](#grafischeuebersichtdesservices)
+- [Einführung](#einführung)
+- [Grafische Übersicht des Services](#grafischeübersichtdesservices)
 - [Code](#code)
 	- [Code-Quelle](#code-quelle)
 	- [Vagrantfile](#vagrantfile)
