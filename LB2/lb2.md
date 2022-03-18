@@ -74,8 +74,8 @@ Mein Vagrantfile sieht folgendermassen aus:
 | Code| Beschreibung|
 | --------------| -----------------|
 | Vagrant.configure("2") do config | Diese Zeile im Code beschreibt die API Version, in diesem Fall die Nummer 2, vom Vagrantfile. In diesem Block beschreibe ich dann die Konfigurationen die ich vornehmen werde.  |
-| config.vm.box | Hier habe musste ich mich für ein Betirebssystem entscheiden, welches ich auf dem VM laufen haben möchte. |
-| db.vm.network | Da definiere ich den Port auf welchen dann die VM zugreift. In diesem Fall wäre es für MySQL Port 3306 und für die web applikation phpmyadmin Port 80.  |
+| config.vm.box | Hier habe ich mich für ein Betirebssystem entscheiden, welches ich auf der VM laufen haben möchte. |
+| db.vm.network | Da definiere ich den Port auf welchen dann die VM zugreift. In diesem Fall wäre es für MySQL Port 3306 und für die Webapplikation phpmyadmin Port 80.  |
 | db.vm.provision | In diesem Schritt erlaube ich die Ausführung von einem Shell Skript nachdem das Guest OS gebootet hat. |
 | config.vm.provider :virtualbox do vb | Hier definiere ich den Provider der VM, in diesem Fall Virtualbox. Zusätzlich habe ich noch Anpassungen gemacht, z.b mehr RAM und CPUs. |
 
@@ -128,10 +128,9 @@ Mein bootstrapfile sieht folgendermassen aus:
 | Ausgabe       | Eingabe          |
 | --------------| -----------------|
 | DBHOST=localhost | Ganz am Anfang habe ich die Variablen definiert, die ich dann später im Code einsetzten werde. Ich habe zum einen den Datenbank Host und Namen definiert sowie den Datenbank User und Passwort.  |
-| apt-get install curl build-essential | `## Überschrift` |
-| debconf-set-selections ... | Wenn man den Service selber mal manuell installieren würde, dann wären diese Konfigurationen genau die gleichen. Hier geht es nur drum das root passowrt einzugeben damit man dann auch alles installieren kann.|
+| debconf-set-selections ... | Wenn man den Service selber mal manuell installieren würde, dann wären diese Konfigurationen genau die gleichen. Hier geht es nur drum das root passwort einzugeben damit man dann auch alles installieren kann.|
 | apt-get -y install mysql-server phpmyadmin | Nun wird der mysql Service bzw. mysql-server und phpmyadmin installiert. |
-| sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf | Die mysql konfig wird nun ergänzt, so dass man auf die Datenbank per remote zugreifen kann. |
+| sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf | Die mysql konfig wird nun ergänzt, so dass man auf die Datenbank per Remote zugreifen kann. |
 
 
 ---
@@ -145,10 +144,10 @@ Um den Service anwenden zu können ist es ganz simpel. Man muss folgendes tun:
 3. Sich mit folgenden Anmeldedaten anmelden:
    - Benutzername: root
    - Passwort:     root
-![Anmeldefenster](M300-Services\LB2\Bilder\Anmeldefenster.PNG)
+[Anmeldefenster](\LB2\Bilder\Anmeldefenster.PNG)
 
 4. Wenn man nun auf Benutzerkonten geht sieht man die zwei User "root" & "testuser" die auch verschiedene Berechtigungen haben. Sowie in der linken Spalte sieht man die zwei Datenbanken "TBZ" & "Modul300", welche auch erstellt wurden. Hier noch ein Bild:
-![Database-Users](M300-Services\LB2\Bilder\Database-Users.PNG)
+[Database-Users](\LB2\Bilder\Database-Users.PNG)
 
 ---
 <a name="testen"></a>
