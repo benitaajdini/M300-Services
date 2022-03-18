@@ -29,6 +29,8 @@ phpmyadmin und die entsprechenden Webtools Apache2 und php7.
 <a name="grafische"></a>
 # Grafische Übersicht des Services
 
+
+
 ---
 
 # Code
@@ -37,7 +39,7 @@ phpmyadmin und die entsprechenden Webtools Apache2 und php7.
 
 Ich habe die Anleitung, [HIER](https://www.yourtechy.com/technology/mysql-server-vagrant-virtualbox/)
 auf dieser Seite gefunden. Dort wird der Code für das vagrantfile und das bootstrap.sh aufgezeigt. 
-Mein vagrantfile ist nur ein bisschen anders als das in der Anleitung.
+Ich habe aber Änderungen vorgenommen an beiden Files, d.h sie sind nicht eins zu eins gleich wie auf der Seite beschrieben ist.
 
 Ich werde nun meine beiden files aufzeigen und erklären, was welcher Schritt macht. 
 
@@ -155,6 +157,8 @@ Um den Service anwenden zu können ist es ganz simpel. Man muss folgendes tun:
 <a name="testen"></a>
 # Service testen
 
+Testen können wir den Service nachdem wir `vagrant up` gemacht haben und auf die Seite http://127.0.0.1:3306/phpmyadmin zugreifen.
+Wenn dort ein Anmeldefenster kommt und man sich mit dem Benutzernamen *root* und Passwort *root* oder mit dem anderen Benutzer *testuser* und Passwort *test123* anmelden kann, dann funktioniert der Service.
 
 ---
 
