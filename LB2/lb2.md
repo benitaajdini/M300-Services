@@ -145,11 +145,11 @@ Um den Service anwenden zu können ist es ganz simpel. Man muss folgendes tun:
    - Benutzername: root
    - Passwort:     root
 
-![Anmeldefenster](\Bilder\Anmeldefenster.jpg)
+![Anmeldefenster](Anmeldefenster.jpg)
 
 4. Wenn man nun auf Benutzerkonten geht sieht man die zwei User "root" & "testuser" die auch verschiedene Berechtigungen haben. Sowie in der linken Spalte sieht man die zwei Datenbanken "TBZ" & "Modul300", welche auch erstellt wurden. Hier noch ein Bild:
 
-![Database-Users](\Bilder\Database-Users.jpg)
+![Database-Users](Database-Users.jpg)
 
 ---
 <a name="testen"></a>
