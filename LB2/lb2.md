@@ -70,59 +70,72 @@ Mein Vagrantfile sieht folgendermassen aus:
 
 
 
+
+| Code| Beschreibung|
+| --------------| -----------------|
+| Vagrant.configure("2") do |config| | Diese Zeile im Code beschreibt die API Version, in diesem Fall die Nummer 2, vom Vagrantfile. In diesem Block beschreibe ich dann die Konfigurationen die ich vornehmen werde.  |
+| config.vm.box | Hier habe musste ich mich für ein Betirebssystem entscheiden, welches ich auf dem VM laufen haben möchte. |
+| db.vm.network | Da definiere ich den Port auf welchen dann die VM zugreift. In diesem Fall wäre es für MySQL Port 3306 und für die web applikation phpmyadmin Port 80.  |
+| db.vm.provision | In diesem Schritt erlaube ich die Ausführung von einem Shell Skript nachdem das Guest OS gebootet hat. |
+| config.vm.provider :virtualbox do |vb| | Hier definiere ich den Provider der VM, in diesem Fall Virtualbox. Zusätzlich habe ich noch Anpassungen gemacht, z.b mehr RAM und CPUs. |
+
+
+
 <a name="bootstrap"></a>
 ## Bootstrap.sh
 
 Mein bootstrapfile sieht folgendermassen aus:
 
-    #!/usr/bin/env bash
-
     DBHOST=localhost
-    DBNAME=MySQL
-    DBUSER=root
-    DBPASSWD=root
+    DBNAME1=Modul300
+    DBNAME2=TBZ
+    DBROOTUSER=root
+    DBROOTPASSWD=root
+    DBUSER=testuser
+    DBPASSWD=test123
 
     apt-get update
-    apt-get install vim curl build-essential python-software-properties git
-    debconf-set-selections <<< "mysql-server mysql-server/root_password password $DBPASSWD"
-    debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DBPASSWD"
+    apt-get install curl build-essential
+    debconf-set-selections <<< "mysql-server mysql-server/root_password password $DBROOTPASSWD"
+    debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DBROOTPASSWD"
     debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true"
-    debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $DBPASSWD"
-    debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $DBPASSWD"
-    debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $DBPASSWD"
+    debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $DBROOTPASSWD"
+    debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $DBROOTPASSWD"
+    debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $DBROOTPASSWD"
     debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none"
 
 
-    # install mysql and admin interface
-
     apt-get -y install mysql-server phpmyadmin
 
-    mysql -uroot -p$DBPASSWD -e "CREATE DATABASE $DBNAME"
-    mysql -uroot -p$DBPASSWD -e "grant all privileges on $DBNAME.* to '$DBUSER'@'%' identified by '$DBPASSWD'"
+    mysql -uroot -p$DBROOTPASSWD -e "CREATE DATABASE $DBNAME1"
+    mysql -uroot -p$DBROOTPASSWD -e "CREATE DATABASE $DBNAME2"
+    mysql -uroot -p$DBROOTPASSWD -e "grant all privileges on $DBNAME1.* to '$DBROOTUSER'@'%' identified by '$DBROOTPASSWD'"
+    mysql -uroot -p$DBROOTPASSWD -e "grant all privileges on $DBNAME2.* to '$DBROOTUSER'@'%' identified by '$DBROOTPASSWD'"
+    mysql -uroot -p$DBROOTPASSWD -e "grant select on $DBNAME1.* to '$DBUSER'@'%' identified by '$DBPASSWD'"
+    mysql -uroot -p$DBROOTPASSWD -e "grant select on $DBNAME2.* to '$DBUSER'@'%' identified by '$DBPASSWD'"
 
     cd /vagrant
 
-    #update mysql conf file to allow remote access to the db
 
     sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
     sudo service mysql restart
 
 
-    # setup phpmyadmin
-
-    apt-get -y install php apache2 libapache2-mod-php php-curl php-gd php-mysql php-gettext a2enmod rewrite
-
-    sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/apache2.conf
-
-    rm -rf /var/www/html
-    ln -fs /vagrant/public /var/www/html
-
-    sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php/7.0/apache2/php.ini
-    sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.0/apache2/php.ini
-
     service apache2 restart
 
+
+
+| Ausgabe       | Eingabe          |
+| --------------| -----------------|
+| DBHOST=localhost | Ganz am Anfang habe ich die Variablen definiert, die ich dann später im Code einsetzten werde. Ich habe zum einen den Datenbank Host und Namen definiert sowie den Datenbank User und Passwort.  |
+| apt-get install curl build-essential | `## Überschrift` |
+| Überschrift 3 | `### Überschrift`|
+| Überschrift 3 | `### Überschrift`|
+| Überschrift 3 | `### Überschrift`|
+| Überschrift 3 | `### Überschrift`|
+| Überschrift 3 | `### Überschrift`|
+| Überschrift 3 | `### Überschrift`|
 
 
 ---
@@ -131,7 +144,7 @@ Mein bootstrapfile sieht folgendermassen aus:
 
 ---
 <a name="testen"></a>
-# Service teseten
+# Service testen
 
 ---
 
