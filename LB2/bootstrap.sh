@@ -7,7 +7,6 @@ DBUSER=testuser
 DBPASSWD=test123
 
 apt-get update
-apt-get install curl build-essential
 debconf-set-selections <<< "mysql-server mysql-server/root_password password $DBROOTPASSWD"
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DBROOTPASSWD"
 debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true"
