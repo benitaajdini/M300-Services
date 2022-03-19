@@ -147,7 +147,7 @@ Mein bootstrapfile sieht folgendermassen aus:
 | --------------| -----------------|
 | DBHOST=localhost | Ganz am Anfang habe ich die Variablen definiert, die ich dann später im Code einsetzten werde. Ich habe zum einen den Datenbank Host und Namen definiert sowie den Datenbank User und Passwort.  |
 | debconf-set-selections ... | Wenn man den Service selber mal manuell installieren würde, dann wären diese Konfigurationen genau die gleichen. Hier geht es nur drum das root passwort einzugeben damit man dann auch alles installieren kann.|
-| mysql -uroot -p$DBROOTPASSWD -e ... | Hier mache ich die Konfigurationen auf der Datenbank bzw. ich erstelle die Datenbanken, Tabellen und fülle die Tabellen auch aus. Ausserdem habe ich noch die Tabellen mit Verbunden mit Primary und Foreign Keys. |
+| mysql -uroot -p$DBROOTPASSWD -e ... | Hier mache ich die Konfigurationen auf der Datenbank bzw. ich erstelle die Datenbanken, Tabellen und fülle die Tabellen auch aus. Ausserdem habe ich noch die Tabellen Verbunden mit Primary und Foreign Keys. |
 | apt-get -y install mysql-server phpmyadmin | Nun wird der mysql Service bzw. mysql-server und phpmyadmin installiert. |
 | sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf | Die mysql konfig wird nun ergänzt, so dass man auf die Datenbank per Remote zugreifen kann. |
 
@@ -176,10 +176,8 @@ Um den Service anwenden zu können ist es ganz simpel. Man muss folgendes tun:
 
 Testen können wir den Service nachdem wir `vagrant up` gemacht haben und auf die Seite http://127.0.0.1:3306/phpmyadmin zugreifen.
 Wenn dort ein Anmeldefenster kommt und man sich mit dem Benutzernamen *root* und Passwort *root* oder mit dem anderen Benutzer *testuser* und Passwort *test123* anmelden kann, dann funktioniert der Service.
-Wenn man nun das Interface sieht von phpmyadmin dann funktioniert es:
+Wenn man nun das Interface sieht von phpmyadmin dann funktioniert es. Man natürlich noch nachsehen, ob man die Tabellen sieht und auch ob die Keys gesetzt wurden:
 
 ![phpmyadmin](Bilder/phpmyadmin-interface.JPG)
 
 ---
-
-
