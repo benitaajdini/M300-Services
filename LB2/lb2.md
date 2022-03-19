@@ -3,7 +3,7 @@
 ---
 
 # Inhaltsverzeichnis
-<span style="color:purple">
+
 - [Einführung](#einführung)
 - [Grafische Übersicht des Services](#grafische)
 - [Code](#code)
@@ -12,12 +12,12 @@
 	- [Bootstrap.sh](#bootstrap)
 - [Service Anwendung](#anwendung)
 - [Service testen](#testen)
-</span>
+
 ---
 
 # Einführung
 
-Ich habe mich für das Projekt **MySQL automatisch einrichten** entschieden.
+Ich habe mich für das Projekt <span style="color:red">**MySQL automatisch einrichten**</span> entschieden.
 Mein Projekt umfasst die Virtualisierung und Automatisierung von Ubuntu zum Ausführen eines MySQL-Servers.
 Damit es angenehmer ist die MySQL-Datenbank und ihre Benutzer zu verwalten und zu konfigurieren
 habe ich mich entschieden noch einen GUI mit einzubinden. Dazu verwenden ich das webbasierte 
@@ -87,12 +87,14 @@ Mein Vagrantfile sieht folgendermassen aus:
 Mein bootstrapfile sieht folgendermassen aus:
 
     DBHOST=localhost
-    DBNAME1=Modul300
-    DBNAME2=TBZ
+    DBNAME1=TBZ
+    DBNAME2=Modul300
     DBROOTUSER=root
     DBROOTPASSWD=root
     DBUSER=testuser
     DBPASSWD=test123
+    DBTABLECLASS=ST19d
+    DBTABLENOTEN=Noten
 
     apt-get update
     debconf-set-selections <<< "mysql-server mysql-server/root_password password $DBROOTPASSWD"
@@ -106,12 +108,27 @@ Mein bootstrapfile sieht folgendermassen aus:
 
     apt-get -y install mysql-server phpmyadmin
 
-    mysql -uroot -p$DBROOTPASSWD -e "CREATE DATABASE $DBNAME1"
-    mysql -uroot -p$DBROOTPASSWD -e "CREATE DATABASE $DBNAME2"
     mysql -uroot -p$DBROOTPASSWD -e "grant all privileges on $DBNAME1.* to '$DBROOTUSER'@'%' identified by '$DBROOTPASSWD'"
     mysql -uroot -p$DBROOTPASSWD -e "grant all privileges on $DBNAME2.* to '$DBROOTUSER'@'%' identified by '$DBROOTPASSWD'"
     mysql -uroot -p$DBROOTPASSWD -e "grant select on $DBNAME1.* to '$DBUSER'@'%' identified by '$DBPASSWD'"
     mysql -uroot -p$DBROOTPASSWD -e "grant select on $DBNAME2.* to '$DBUSER'@'%' identified by '$DBPASSWD'"
+
+    mysql -uroot -p$DBROOTPASSWD <<%EOF%
+	    CREATE DATABASE $DBNAME1;
+	    CREATE DATABASE $DBNAME2;
+	    USE $DBNAME2;
+	    CREATE TABLE ST19d(SchuelerID INT, Name VARCHAR(20), Vorname VARCHAR(20), PRIMARY KEY (SchuelerID));
+	    CREATE TABLE Noten(NotenID INT(50), Prüfung VARCHAR(50), Note VARCHAR(50), SchuelerID INT(50), PRIMARY KEY (NotenID), FOREIGN KEY (SchuelerID) REFERENCES ST19d(SchuelerID));
+	    INSERT INTO $DBTABLECLASS VALUE (1,"Ajdini","Benita");
+	    INSERT INTO $DBTABLECLASS VALUE (2,"Istrefi","Meset");
+	    INSERT INTO $DBTABLECLASS VALUE (3,"Zgraggen","Mark");
+	    INSERT INTO $DBTABLENOTEN VALUE ("1","LB1", "5", "1");
+	    INSERT INTO $DBTABLENOTEN VALUE ("2","LB1", "6", "2");
+	    INSERT INTO $DBTABLENOTEN VALUE ("3","LB1", "5.5", "3");
+	    quit
+    %EOF%
+
+
 
     cd /vagrant
 
@@ -120,8 +137,9 @@ Mein bootstrapfile sieht folgendermassen aus:
 
     sudo service mysql restart
 
-
     service apache2 restart
+
+
 
 
 
@@ -129,6 +147,7 @@ Mein bootstrapfile sieht folgendermassen aus:
 | --------------| -----------------|
 | DBHOST=localhost | Ganz am Anfang habe ich die Variablen definiert, die ich dann später im Code einsetzten werde. Ich habe zum einen den Datenbank Host und Namen definiert sowie den Datenbank User und Passwort.  |
 | debconf-set-selections ... | Wenn man den Service selber mal manuell installieren würde, dann wären diese Konfigurationen genau die gleichen. Hier geht es nur drum das root passwort einzugeben damit man dann auch alles installieren kann.|
+| mysql -uroot -p$DBROOTPASSWD -e ... | Hier mache ich die Konfigurationen auf der Datenbank bzw. ich erstelle die Datenbanken, Tabellen und fülle die Tabellen auch aus. Ausserdem habe ich noch die Tabellen mit Verbunden mit Primary und Foreign Keys. |
 | apt-get -y install mysql-server phpmyadmin | Nun wird der mysql Service bzw. mysql-server und phpmyadmin installiert. |
 | sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf | Die mysql konfig wird nun ergänzt, so dass man auf die Datenbank per Remote zugreifen kann. |
 
