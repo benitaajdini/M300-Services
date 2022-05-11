@@ -22,7 +22,7 @@ Als Resultat werde ich einen Multi-Container-WordPress-Anwendung haben. Als Date
 <a name="grafische"></a>
 # Grafische Übersicht des Services
 
-![Grafische-Übersicht](images/grafische-uebersicht.jpg)
+![Grafische-Übersicht](Bilder/grafische-uebersicht.jpg)
 
 ---
 
@@ -102,33 +102,43 @@ Ich habe mein docker-compose File mit Hilfe von docker hub erstellt. Folgende Se
 Um den Service anwenden zu können ist es ganz simpel. Man muss folgendes tun:
 
 1. Folgenden Befehl auf docker ausführen: `docker-compose up -d`
-2. Nachdem alles fertig aufgesetzt wurde kann man folgenden Link für Wordpress aufrufen: 'localhost:8081'
+2. Nachdem alles fertig aufgesetzt wurde kann man folgenden Link für Wordpress aufrufen: **localhost:8081**
 3. Nun sollte man auf die Wordpress Seite gelangen. Man muss nur noch kurz ein Login erstellen, dies zeige ich mit folgenden Bildern auf:
-![wordpress-start](images/wordpress-start.jpg)
-![wordpress-anmeldung](images/wordpress-anmeldung.jpg)
-![wordpress-login](images/wordpress-login.jpg)
-![wordpress-login2](images/wordpress-login2.jpg)
-![wordpress-site](images/wordpress-site.jpg)
+
+![wordpress-start](Bilder/wordpress-start.jpg)
+
+![wordpress-anmeldung](Bilder/wordpress-anmeldung.jpg)
+
+![wordpress-login](Bilder/wordpress-login.jpg)
+
+![wordpress-login2](Bilder/wordpress-login2.jpg)
+
+![wordpress-site](Bilder/wordpress-site.jpg)
 
 4. Man kann nun testen, ob Wordpress auch wirklich funktioniert. Hier werde ich testen, ob man eine neue Seite erstellen kann, dies zeige ich mit den folgenden Bildern auf:
-![wordpress-newpage](images/wordpress-newpage.jpg)
-![wordpress-pageM300](images/wordpress-pageM300.jpg)
+
+![wordpress-newpage](Bilder/wordpress-newpage.jpg)
+
+![wordpress-pageM300](Bilder/wordpress-pageM300.jpg)
+
 Siehe da es funktioniert :)
 
-5. Phpmyadmin kann man auch teste, ob wir auch Zugriff haben. Dafür muss man auf folgenden Link zugreifen: 'localhost:3306'
-![phpmyadmin-login](images/phpmyadmin-login.jpg)
+5. Phpmyadmin kann man auch teste, ob wir auch Zugriff haben. Dafür muss man auf folgenden Link zugreifen: **localhost:3306**
+
+![phpmyadmin-login](Bilder/phpmyadmin-login.jpg)
 
 6. Hier muss man folgende Logindaten eingeben:
    - Benutzername: root
    - Passwort:     top-secret
 7. Nun sollte man folgendes sehen:
-![phpmyadmin-home](images/phpmyadmin-home.jpg)
+
+![phpmyadmin-home](Bilder/phpmyadmin-home.jpg)
 
 ---
 <a name="testen"></a>
 # Service testen
 
-Testen können wir den Service nachdem wir `docker-compose up -d` gemacht haben und auf die Seite 'localhost:8081' und 'localhost:3306' zugreifen.
+Testen können wir den Service nachdem wir `docker-compose up -d` gemacht haben und auf die Seite **localhost:8081** und **localhost:3306** zugreifen.
 Wenn bei phpmyadmin ein Anmeldefenster kommt und man sich mit dem Benutzernamen *root* und Passwort *top-secret* anmelden kann, dann funktioniert der Service.
 Wenn man auch die Wordpress Seite sieht. Dort muss man nur noch ein Login erstellen und danach kann man sich anmelden und Wordpress ganz normal benutzten.
 Und so einfach hat man Wordpress anhand einem docker-compose File deployed.
