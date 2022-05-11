@@ -22,7 +22,7 @@ Als Resultat werde ich einen Multi-Container-WordPress-Anwendung haben. Als Date
 <a name="grafische"></a>
 # Grafische Übersicht des Services
 
-![grafische-uebersicht](images/grafische-uebersicht.jpg)
+![Grafische-Übersicht](images/grafische-uebersicht.jpg)
 
 ---
 
