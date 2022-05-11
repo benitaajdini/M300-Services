@@ -27,3 +27,19 @@ services:
     volumes:
      - "./:/var/www/html"
 
+  phpmyadmin: 
+    depends_on:
+     - mysql_db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+     - 3306:3306
+    environment:
+     PMA_HOST: mysql_db
+     MYSQL_ROOT_PASSWORD: top-secret
+    volumes:
+     - "./:/var/www/html/phpmyadmin"
+
+volumes:
+  mysql: {}
+
