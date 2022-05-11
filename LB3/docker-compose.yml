@@ -12,3 +12,18 @@ services:
     volumes:
      - mysql:/var/lib/mysql
 
+  wordpress:
+    depends_on:
+     - mysql_db
+    image: wordpress:latest
+    restart: always
+    ports:
+     - "8081:80"
+    environment:
+     WORDPRESS_DB_HOST: mysql_db:3306
+     WORDPRESS_DB_USER: Benita
+     WORDPRESS_DB_PASSWORD: 1234
+     WORDPRESS_DB_Name: wordpress
+    volumes:
+     - "./:/var/www/html"
+

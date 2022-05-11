@@ -15,8 +15,11 @@
 ---
 
 # Einführung
-
-
+Ich habe mich für das Projekt <span style="color:red">**Wordpress mit MySQL und phpMyAdmin in Docker bereit zu stellen**</span> entschieden.
+Mein Projekt umfasst die Virtualisierung und Automatisierung von Ubuntu zum Ausführen eines MySQL-Servers.
+Damit es angenehmer ist die MySQL-Datenbank und ihre Benutzer zu verwalten und zu konfigurieren
+habe ich mich entschieden noch einen GUI mit einzubinden. Dazu verwenden ich das webbasierte 
+phpmyadmin.
 
 ---
 <a name="grafische"></a>
