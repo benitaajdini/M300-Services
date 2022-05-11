@@ -90,10 +90,10 @@ Ich habe mein docker-compose File mit Hilfe von docker hub erstellt. Folgende Se
 |container name:|Name des Containers.|
 |image:|Das image wird von dockerhub heruntergeladen.|
 |restart: always|Wenn der Container zerstört wird, wird er automatisch neu gestartet. Dies kann passieren, wenn Sie Ihren Computer neu starten.|
-|environment:|Hier definieren wir die Umgebungsvariabelan umden Mysql-Container auszuführen, auf den aus der Docker-Dokumentation verwiesen wird.|
+|environment:|Hier definieren wir die Umgebungsvariabeln um den Mysql-Container auszuführen, auf den aus der Docker-Dokumentation verwiesen wird.|
 |volumes:|Wir werden dieses Volume dauerhaft machen, damit unsere Daten zwischen dem Neustart oder der Zerstörung des Containers überleben. Also es dient dazu aber weiter unten definieren wir nochmals eins.|
 |depends_on:|Der WordPress-Container wird nur gestartet, wenn der mysql_db-Dienst bereits gestartet wurde.|
-|ports:|Port angegeben, die Ports sollten schon offen sein auf der VM (Vagrantfile vor definiert)|
+|ports:|Port angegeben, die Ports sollten schon offen sein auf der VM (Vagrantfile vordefiniert)|
 
 ---
 <a name="anwendung"></a>
@@ -123,6 +123,7 @@ Um den Service anwenden zu können ist es ganz simpel. Man muss folgendes tun:
 
 Siehe da es funktioniert :)
 
+
 5. Phpmyadmin kann man auch teste, ob wir auch Zugriff haben. Dafür muss man auf folgenden Link zugreifen: **localhost:3306**
 
 ![phpmyadmin-login](Bilder/phpmyadmin-login.jpg)
@@ -140,7 +141,7 @@ Siehe da es funktioniert :)
 
 Testen können wir den Service nachdem wir `docker-compose up -d` gemacht haben und auf die Seite **localhost:8081** und **localhost:3306** zugreifen.
 Wenn bei phpmyadmin ein Anmeldefenster kommt und man sich mit dem Benutzernamen *root* und Passwort *top-secret* anmelden kann, dann funktioniert der Service.
-Wenn man auch die Wordpress Seite sieht. Dort muss man nur noch ein Login erstellen und danach kann man sich anmelden und Wordpress ganz normal benutzten.
+Und wenn man auch die Wordpress Seite sieht. Dort muss man nur noch ein Login erstellen und danach kann man sich anmelden und Wordpress ganz normal benutzten.
 Und so einfach hat man Wordpress anhand einem docker-compose File deployed.
 
 ---
