@@ -1,5 +1,4 @@
 # **Dokumentation LB3**
-
 ---
 
 # Inhaltsverzeichnis
